@@ -1,13 +1,17 @@
-name: create a new branch
+name: Create new branch
 
-on:
-  push:
-    branches: [ main ]
+on: push
+
 jobs:
-  
-  
-  runs-on: ubuntu-22:04
-  steps:
-  - uses: actions/checkout@v2
-  - name: create a new branch
-    run:  git checkout -b dev1.2.5
+  create-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create branch
+        run: |
+          git checkout -b new-branch
+          git push --set-upstream origin new-branch
+
